@@ -23,6 +23,20 @@ function getAssignments(req, res) {
         res.send(assignments);
     });
 }
+
+function getAssignmentsRendu(req, res) {
+    Assignment.find({rendu: true}, (err, assignments) => {
+        if(err){res.send(err)}
+        res.send(assignments);
+    });
+}
+
+function getAssignmentsNonRendu(req, res) {
+    Assignment.find({rendu: false}, (err, assignments) => {
+        if(err){res.send(err)}
+        res.send(assignments);
+    });
+}
    
 
 // Récupérer un assignment par son id (GET)
@@ -84,4 +98,4 @@ function deleteAssignment(req, res) {
 
 
 
-module.exports = { getAssignments, postAssignment, getAssignment, updateAssignment, deleteAssignment };
+module.exports = { getAssignments, postAssignment, getAssignment, updateAssignment, deleteAssignment, getAssignmentsRendu, getAssignmentsNonRendu };

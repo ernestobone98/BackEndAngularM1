@@ -46,14 +46,20 @@ const prefix = '/api';
 app.route(prefix + '/assignments')
   .get(assignment.getAssignments);
 
+app.route(prefix + '/assignments/NonRendu')
+  .get(assignment.getAssignmentsNonRendu);
+
+app.route(prefix + '/assignments/Rendu')
+  .get(assignment.getAssignmentsRendu);
+
 app.route(prefix + '/assignments/:id')
   .get(assignment.getAssignment)
   .delete(assignment.deleteAssignment);
 
-
 app.route(prefix + '/assignments')
   .post(assignment.postAssignment)
   .put(assignment.updateAssignment);
+
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");
